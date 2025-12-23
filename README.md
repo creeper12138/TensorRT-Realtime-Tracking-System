@@ -44,33 +44,7 @@ The core optimization goal was to minimize **End-to-End Latency** (Photon-to-Act
 *GPU is fully utilized with tightly packed kernels. Preprocessing and Inference are fused in a single CUDA Stream.*
 ![Optimized Profiling](assets/ScreenShot_2025-12-23_195325_523.png)![Optimized Profiling](assets/ScreenShot_2025-12-23_195338_663.png)![Optimized Profiling](assets/ScreenShot_2025-12-23_195417_448.png)
 
----
 
-## 🏗️ System Architecture (系统架构)
-
-The system adopts a **Producer-Consumer model**. The Python layer handles the high-level control logic (PID), while the C++ shared library handles the heavy lifting on the GPU.
-
-```mermaid
-graph TD
-    subgraph "Host (CPU) - Control Plane"
-        A[DXCam Sensor Input] -->|Raw Frame| B(Pinned Memory Buffer)
-        G[Data Parsing] -->|Candidates| H{PID Controller}
-        H -->|Tracking Signal| I[Actuator Interface]
-    end
-
-    subgraph "Device (GPU) - Compute Plane"
-        B -->|HtoD Async Copy| C[CUDA Stream]
-        subgraph "Custom Kernels"
-            C --> D[Preprocess Kernel<br/>Bilinear Interpolation]
-            D --> E[TensorRT Engine<br/>INT8 Inference]
-            E --> F[Postprocess Kernel<br/>Parallel Reduction Top-K]
-        end
-        F -->|DtoH Async Copy| G
-    end
-
-    style D fill:#f96,stroke:#333,stroke-width:2px
-    style F fill:#f96,stroke:#333,stroke-width:2px
-    style E fill:#ff9,stroke:#333,stroke-width:4px
 
 ⚡ Performance Optimization (性能优化核心)
 1. Custom CUDA Preprocessing (算子融合)
