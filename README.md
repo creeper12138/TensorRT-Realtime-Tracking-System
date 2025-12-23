@@ -40,16 +40,15 @@ Note the large gaps between GPU activities due to CPU overhead.
 
 **Figure 2: Optimized (Fully Pipelined)**. 
 GPU kernels are densely packed (99% utilization during active tracking).
-![Optimized](assets/optimized_pipeline.png)
+![Optimized](assets/ScreenShot_2025-12-23_195338_663.png)
+![Optimized](assets/ScreenShot_2025-12-23_195325_523.png)
 
 **Figure 3: TensorRT INT8 Quantization Details**. 
 Utilizing NVIDIA Ampere/Ada Lovelace Tensor Cores (`sm80_xmma`) for accelerated inference.
-![TensorRT INT8](assets/tensorrt_int8_detail.png)
+![TensorRT INT8](assets/ScreenShot_2025-12-23_195417_448.png)
 
 ---
-
----
-📝 License
+## 📝 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Disclaimer: This project is for research and educational purposes in the field of Computer Vision and Heterogeneous Computing.
