@@ -16,7 +16,7 @@ import PID
 # ================= ⚙️ 系统配置 (System Config) =================
 # [工程化命名]: 避免使用 absolute path，改用相对路径
 # [功能描述]: 加载包含 CUDA 预处理/后处理 Kernel 的动态链接库
-KERNEL_LIB_PATH = os.path.join(os.path.dirname(__file__), "libs", "acceleration_backend.dll")
+KERNEL_LIB_PATH = os.path.join(os.path.dirname(__file__), "libs", "yoloC.dll")
 ENGINE_PATH = os.path.join("models", "yolov8m_int8.engine")
 
 # [视觉伺服配置]
@@ -234,4 +234,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt: stop_signal.value = True
     
     p.join()
+
     listener.stop()
