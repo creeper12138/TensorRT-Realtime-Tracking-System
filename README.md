@@ -38,7 +38,7 @@ The core optimization goal was to minimize **End-to-End Latency** (Photon-to-Act
 
 **Before Optimization (CPU Bound):**
 *Note the sparse GPU utilization and large gaps due to GIL and PCI-e transfer overhead.*
-![Baseline Profiling](assets/profiling_baseline.png)
+![Baseline Profiling](assets/baseline_cpu.png.png)
 
 **After Optimization (Fully Saturated Pipeline):**
 *GPU is fully utilized with tightly packed kernels. Preprocessing and Inference are fused in a single CUDA Stream.*
